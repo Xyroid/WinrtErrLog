@@ -7,9 +7,19 @@ using System.Threading.Tasks;
 
 namespace WinrtErrLog
 {
+    /// <summary>
+    /// ErrorLogger provides method to save exception details in Google spreadsheets.
+    /// </summary>
     public class ErrorLogger
     {
-        List<ExceptionEntry> lstExceptionEntry;
+        /// <summary>
+        /// Data to be uploaded on Google spreadsheets.
+        /// </summary>
+        private List<ExceptionEntry> lstExceptionEntry;
+
+        /// <summary>
+        /// Gets or set Google Form ID.
+        /// </summary>
         public string formId { get; set; }
 
         /// <summary>
@@ -50,9 +60,9 @@ namespace WinrtErrLog
                 
                 return await objHttpClient.SendAsync(objHttpRequestMessage);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
